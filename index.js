@@ -5,8 +5,9 @@ const PORT = 3000; // tje port we are going to usee
 
 let books = []; // where we are going to store the books as we arent using a database
 
-let nxtDetailId = 1;
-let nxtBookId = 1;
+//pretty sure I could have done this another way but yeah
+let nxtDetailId = 1; //gonna use this to iterate through books details
+let nxtBookId = 1; //same as above except for the books themselves. 
 
 //GET request for when we want to see the the student numbers located in whoami
 app.get('/whoami', (req, res) => {
