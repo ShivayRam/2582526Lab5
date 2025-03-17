@@ -47,7 +47,7 @@ app.post('/books', (req, res) => {
         id: nxtBookId.toString(),
         title,
         details: details.map(detail => ({
-            id: (nxtDetailId++).toString(),
+            id: (nxtDetailId++).toString(), //need to be in string format because lucky
             author: detail.author,
             genre: detail.genre,
             publicationYear: detail.publicationYear
@@ -83,6 +83,19 @@ app.delete('/books/:id', (req, res) => {
     const deletedBook = books.splice(index, 1); // deletes the selected boo from the list
     res.json(deletedBook[0]); // fetches if validation passed
 });
+
+/*app.post('/books/:id/details', (req, res) => {
+    const book = books.find(book => book.id === req.params.id);
+
+    if (!book) {
+        return res.status(404).json({error: "Book Not Found"});//i think its the right error messGE
+    }
+
+    const {author, genre, publicationYear} = req.body;
+
+    if (!author || !genre || !publicationYear) { //checks if there is a value from a field missing
+        return res.status(400).json({error: "Bad Request"}) //throws the appropriate error message iuf so
+    }*/
 
 //POST request to add detaILS TO book
 app.post('/books/:id/details', (req, res) => {
